@@ -10,7 +10,15 @@ Usage is simple. Create an image, then get its dominant color & palette.
 var img = document.getElementById('image');
 var colors = RGBaster.colors(img, function(payload){
   // You now have the payload.
+  console.log(payload.dominant);
+  console.log(payload.palette);
 });
+```
+
+The `colors` function takes an optionanl third parameter, which is the size of the palette to return. By default, it returns a palette size of 10.
+
+```javascript
+var colors = RGBaster.colors(img, success, 30) // Returns 30 colors.
 ```
 
 Author

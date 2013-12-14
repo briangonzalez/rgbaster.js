@@ -8,7 +8,23 @@
     function onload(){
       var img = document.getElementById('image');
       var colors = RGBaster.colors(img);
-      document.documentElement.style.background = colors['dominant'];
+      
+      img.style.borderColor = colors.palette[0];
+
+      var makeDivWithClassAndBGColor = function(klass, color){
+        var div = document.createElement("div")
+        div.className = klass;
+        div.style.backgroundColor = color;
+        return div;
+      }
+
+      var palette = document.getElementById('palette');
+      palette.appendChild( makeDivWithClassAndBGColor('color', colors.dominant) );
+
+      colors.palette.forEach(function(color){
+        palette.appendChild( makeDivWithClassAndBGColor('color', color) );
+      })
+
     }
   </script>
 
@@ -19,12 +35,25 @@
 
     #image{
       text-align: center;
-      border: 2px solid #eee;
+      border: 10px solid #eee;
+      box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    }
+
+    #palette{
+      padding: 5px;
+      background: #333;
+      position: fixed; top: 10px; left: 10px;
+    }
+
+    #palette .color{
+      width: 20px; height: 20px;
+      margin: 3px;
     }
   </style>
 
 </head>
 <body onload='onload()'>
+  <div id='palette'></div>
   <img src="img.jpg" id='image'>
 </body>
 </html>

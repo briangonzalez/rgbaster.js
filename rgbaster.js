@@ -20,6 +20,10 @@
     return ['rgb(', name, ')'].join('');
   };
 
+  var mapPalette = function(palette){
+    return palette.map(function(c){ return makeRGB(c.name) })
+  }
+
   /**
   *     RGBaster Object
   *     
@@ -27,6 +31,7 @@
   *
   */
   var BLOCKSIZE = 5; 
+  var PALETTESIZE = 10; 
 
   var RGBaster = {};
 
@@ -39,9 +44,12 @@
     var colorCounts   = {},
         rgbString     = '',
         rgb           = [],
-        dominant      = { name: '', count: 0 };
+        colors        = { 
+          dominant: { name: '', count: 0 },
+          palette:  Array.apply(null, Array(PALETTESIZE)).map(Boolean).map(function(a){ return { name: '0,0,0', count: 0 } }) 
+        };
 
-    // Loop over all pixels.
+    // Loop over all pixels, in BLOCKSIZE iterations.
     while ( (i += BLOCKSIZE * 4) < length ) {
       ++count;
       rgb[0] = data[i];
@@ -57,15 +65,28 @@
         colorCounts[rgbString] = 1;
       }
 
-      // Find maximum, ignoring black pixels.
-      if ( colorCounts[rgbString] > dominant['count'] && rgbString !== "0,0,0" ) {
-        dominant['name']  = rgbString;
-        dominant['count'] = colorCounts[rgbString];
+      // Find dominant and palette, ignoring black pixels.
+      if ( rgbString !== "0,0,0" ) {
+        var colorCount = colorCounts[rgbString]
+        if ( colorCount > colors.dominant.count ){
+          colors.dominant.name = rgbString;
+          colors.dominant.count = colorCount;
+        } else {
+          colors.palette.some(function(c){
+            if ( colorCount > c.count ) {
+              c.name = rgbString;
+              c.count = colorCount;
+              return true;
+            }
+          });
+        }
       }
+
     }
 
     return {
-      dominant: makeRGB(dominant['name'])
+      dominant: makeRGB(colors.dominant.name),
+      palette:  mapPalette(colors.palette)
     };
   }
 

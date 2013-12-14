@@ -4,7 +4,7 @@ A dead simple javascript library for extracting the dominant color from an image
 
 ### Usage
 
-Usage is simple:
+Usage is simple. Create an image, then get its dominant color & palette.
 
 ```javascript
 var img = document.getElementById('image');

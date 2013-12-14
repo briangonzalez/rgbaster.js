@@ -8,7 +8,9 @@ Usage is simple. Create an image, then get its dominant color & palette.
 
 ```javascript
 var img = document.getElementById('image');
-var colors = RGBaster.colors(img);
+var colors = RGBaster.colors(img, function(payload){
+  // You now have the payload.
+});
 ```
 
 Author

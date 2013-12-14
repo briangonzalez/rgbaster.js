@@ -7,23 +7,23 @@
   <script type="text/javascript">
     function onload(){
       var img = document.getElementById('image');
-      var colors = RGBaster.colors(img);
-      
-      img.style.borderColor = colors.palette[0];
+      var colors = RGBaster.colors(img, function(colors){
+        img.style.borderColor = colors.palette[0];
 
-      var makeDivWithClassAndBGColor = function(klass, color){
-        var div = document.createElement("div")
-        div.className = klass;
-        div.style.backgroundColor = color;
-        return div;
-      }
+        var makeDivWithClassAndBGColor = function(klass, color){
+          var div = document.createElement("div")
+          div.className = klass;
+          div.style.backgroundColor = color;
+          return div;
+        }
 
-      var palette = document.getElementById('palette');
-      palette.appendChild( makeDivWithClassAndBGColor('color', colors.dominant) );
+        var palette = document.getElementById('palette');
+        palette.appendChild( makeDivWithClassAndBGColor('color', colors.dominant) );
 
-      colors.palette.forEach(function(color){
-        palette.appendChild( makeDivWithClassAndBGColor('color', color) );
-      })
+        colors.palette.forEach(function(color){
+          palette.appendChild( makeDivWithClassAndBGColor('color', color) );
+        })        
+      }, 30);
 
     }
   </script>

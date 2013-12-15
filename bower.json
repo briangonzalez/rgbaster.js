@@ -1,0 +1,21 @@
+{
+  "name": "rgbaster",
+  "main": "rgbaster.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/briangonzalez/rgbaster.js",
+  "authors": [
+    "Brian Gonzalez <me@briangonzalez.org>"
+  ],
+  "description": "A dead simple javascript library for extracting the dominant color from an image.",
+  "keywords": [
+    "rgb",
+    "canvas",
+    "color",
+    "image",
+    "dominant"
+  ],
+  "license": "all rights reserved",
+  "ignore": [
+    "demo"
+  ]
+}

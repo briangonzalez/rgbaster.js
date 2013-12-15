@@ -1,5 +1,7 @@
 ;(function(window, undefined){
 
+  "use strict";
+
   // Helper functions.
   var getContext = function(){
     return document.createElement("canvas").getContext('2d');

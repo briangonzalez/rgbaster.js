@@ -70,7 +70,7 @@
                   colorCounts[rgbString] = 1;
                 }
 
-                // Find dominant and palette, ignoring black pixels.
+                // Find dominant and palette, ignoring black/white pixels.
                 if ( rgbString !== "0,0,0" && rgbString !== "255,255,255" ) {
                   var colorCount = colorCounts[rgbString]
                   if ( colorCount > colors.dominant.count ){

@@ -12,7 +12,8 @@
     "canvas",
     "color",
     "image",
-    "dominant"
+    "dominant",
+    "palette"
   ],
   "license": "MIT",
   "ignore": [

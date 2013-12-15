@@ -27,6 +27,10 @@ Author
 |---|
 | [Brian Gonzalez](http://briangonzalez.org) |
 
+About
+-----
+RGBaster was created to modularize a feature of another plugin I built called [adaptive backgrounds](http://briangonzalez.github.io/jquery.adaptive-backgrounds.js/). Check it out!
+
 License
 -------
 MIT

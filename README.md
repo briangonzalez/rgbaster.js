@@ -21,6 +21,17 @@ The `colors` function takes an optional third parameter, which is the size of th
 var colors = RGBaster.colors(img, success, 30) // Returns 30 colors.
 ```
 
+### Browser support
+
+rgbaster.js depends on the following browser functionality:
+
+* [Canvas](http://caniuse.com/#feat=canvas)
+* [CORS](http://caniuse.com/#feat=cors)
+* [Array.prototype.map](http://kangax.github.io/es5-compat-table/#Array.prototype.map)
+
+Check the linked resources above to determine current level of browser support.
+
+
 Author
 -------
 | ![twitter/brianmgonzalez](http://gravatar.com/avatar/f6363fe1d9aadb1c3f07ba7867f0e854?s=70](http://twitter.com/brianmgonzalez "Follow @brianmgonzalez on Twitter") |

@@ -10,7 +10,6 @@ Usage is simple. Create an image (or grab an image URL), then get its dominant c
 var img = document.getElementById('image');
 // or
 var img = 'http://example.com/path-to-image.jpg'
-````
 
 var colors = RGBaster.colors(img, function(payload){
   // You now have the payload.

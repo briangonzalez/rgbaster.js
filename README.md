@@ -4,21 +4,14 @@ A dead simple javascript library for extracting the dominant color from an image
 
 ### Usage
 
-Usage is simple. Create an image, then get its dominant color & palette.
+Usage is simple. Create an image (or grab an image URL), then get its dominant color & palette.
 
 ```javascript
 var img = document.getElementById('image');
-var colors = RGBaster.colors(img, function(payload){
-  // You now have the payload.
-  console.log(payload.dominant);
-  console.log(payload.palette);
-});
-```
+// or
+var img = 'http://example.com/path-to-image.jpg'
+````
 
-OR
-
-```javascript
-var img = 'http://...';
 var colors = RGBaster.colors(img, function(payload){
   // You now have the payload.
   console.log(payload.dominant);
@@ -51,7 +44,7 @@ Author
 
 About
 -----
-RGBaster was created to modularize a feature of another plugin I built called [adaptive backgrounds](http://briangonzalez.github.io/jquery.adaptive-backgrounds.js/). Check it out!
+RGBaster was created to modularize a feature of another plugin I built called [adaptive backgrounds](http://briangonzalez.github.io/jquery.adaptive-backgrounds.js/). Check it out.
 
 License
 -------

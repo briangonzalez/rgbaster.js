@@ -15,6 +15,17 @@ var colors = RGBaster.colors(img, function(payload){
 });
 ```
 
+OR
+
+```javascript
+var img = 'http://...';
+var colors = RGBaster.colors(img, function(payload){
+  // You now have the payload.
+  console.log(payload.dominant);
+  console.log(payload.palette);
+});
+```
+
 The `colors` function takes an optional third parameter, which is the size of the palette to return. By default, it returns a palette size of 10.
 
 ```javascript

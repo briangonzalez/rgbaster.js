@@ -10,21 +10,22 @@
   var getImageData = function(img, loaded){
 
     var imgObj = new Image();
+    var imgSrc = img.src || img;
 
     // Can't set cross origin to be anonymous for data url's
     // https://github.com/mrdoob/three.js/issues/1305
-    if ( img.src.substring(0,5) !== 'data:' )
+    if ( imgSrc.substring(0,5) !== 'data:' )
       imgObj.crossOrigin = "Anonymous";
-    
-    imgObj.src = img.src;
 
     imgObj.onload = function(){  
       var context = getContext();
       context.drawImage(imgObj, 0, 0);
 
-      var imageData = context.getImageData(0, 0, img.width, img.height);
+      var imageData = context.getImageData(0, 0, imgObj.width, imgObj.height);
       loaded && loaded(imageData.data);
     };
+    
+    imgObj.src = imgSrc;
 
   };
 

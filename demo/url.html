@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>rgbaster.js</title>
+  <script type="text/javascript" src='/rgbaster.js'></script>
+  <script type="text/javascript">
+    function onload(){
+    var img = "img.jpg";
+    var colors = RGBaster.colors(img, {
+      paletteSize: 30,
+      success: function(colors){
+
+        var makeDivWithClassAndBGColor = function(klass, color){
+          var div = document.createElement("div");
+          div.className = klass;
+          div.style.backgroundColor = color;
+          return div;
+        };
+
+        console.log("-----------------------------------------------");
+        console.log("rgbaster.js");
+        console.log("-----------------------------------------------");
+        console.log("Dominant color:", colors.dominant);
+        console.log("Secondary color:", colors.secondary);
+        console.log("Palette length:", colors.palette.length);
+        console.log("-----------------------------------------------");
+
+        var palette = document.getElementById('palette');
+        palette.appendChild( makeDivWithClassAndBGColor('color', colors.dominant) );
+
+        colors.palette.forEach(function(color){
+          palette.appendChild( makeDivWithClassAndBGColor('color', color) );
+        });
+      }
+    });
+  }
+</script>
+
+  <style type="text/css">
+    body{
+      text-align: center;
+    }
+
+    #image{
+      text-align: center;
+      border: 10px solid #eee;
+      box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    }
+
+    #palette{
+      padding: 5px;
+      background: #333;
+      position: fixed; top: 10px; left: 10px;
+    }
+
+    #palette .color{
+      width: 20px; height: 20px;
+      margin: 3px;
+    }
+  </style>
+
+</head>
+<body onload='onload()'>
+  <div id='palette'></div>
+</body>
+</html>

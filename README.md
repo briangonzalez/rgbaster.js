@@ -11,17 +11,26 @@ var img = document.getElementById('image');
 // or
 var img = 'http://example.com/path-to-image.jpg'
 
-var colors = RGBaster.colors(img, function(payload){
-  // You now have the payload.
-  console.log(payload.dominant);
-  console.log(payload.palette);
+RGBaster.colors(img, {
+  success: function(payload) {
+    // You now have the payload.
+    console.log(payload.dominant);
+    console.log(payload.secondary);
+    console.log(payload.palette);
+  }
 });
 ```
 
-The `colors` function takes an optional third parameter, which is the size of the palette to return. By default, it returns a palette size of 10.
+The `colors` function takes an optional second parameter, which are its options:
 
 ```javascript
-var colors = RGBaster.colors(img, success, 30) // Returns 30 colors.
+RGBaster.colors(img, {
+  paletteSize: 30,
+  exclude: [ 'rgb(255,255,255)' ],  // don't count white
+  success: function(payload){
+    // do something with payload
+  }
+})
 ```
 
 ### Browser support

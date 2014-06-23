@@ -17,14 +17,14 @@
     if ( imgSrc.substring(0,5) !== 'data:' )
       imgObj.crossOrigin = "Anonymous";
 
-    imgObj.onload = function(){  
-      var context = getContext();
+    imgObj.onload = function(){
+      var context = getContext('2d');
       context.drawImage(imgObj, 0, 0);
 
       var imageData = context.getImageData(0, 0, imgObj.width, imgObj.height);
       loaded && loaded(imageData.data);
     };
-    
+
     imgObj.src = imgSrc;
 
   };
@@ -34,30 +34,33 @@
   };
 
   var mapPalette = function(palette){
-    return palette.map(function(c){ return makeRGB(c.name) })
-  }
+    return palette.map(function(c){ return makeRGB(c.name); });
+  };
 
-  /**
-  *     RGBaster Object
-  *     
-  *     @method colors     
-  *
-  */
-  var BLOCKSIZE = 5; 
-  var PALETTESIZE = 10; 
+
+  // RGBaster Object
+  // ---------------
+  //
+  var BLOCKSIZE = 5;
+  var PALETTESIZE = 10;
 
   var RGBaster = {};
 
-  RGBaster.colors = function(img, success, paletteSize){
+  RGBaster.colors = function(img, opts){
+
+    opts = opts || {};
+    var exclude = opts.exclude || [ ], // for example, to exlude white and black:  [ '0,0,0', '255,255,255' ]
+        paletteSize = opts.paletteSize || PALETTESIZE;
+
     getImageData(img, function(data){
 
-              var length        = data.length,
+              var length        = ( img.width * img.height ) || data.length,
                   colorCounts   = {},
                   rgbString     = '',
                   rgb           = [],
-                  colors        = { 
+                  colors        = {
                     dominant: { name: '', count: 0 },
-                    palette:  Array.apply(null, Array(paletteSize || PALETTESIZE)).map(Boolean).map(function(a){ return { name: '0,0,0', count: 0 } }) 
+                    palette:  Array.apply(null, new Array(paletteSize)).map(Boolean).map(function(a){ return { name: '0,0,0', count: 0 }; })
                   };
 
               // Loop over all pixels, in BLOCKSIZE iterations.
@@ -70,15 +73,15 @@
 
                 // Keep track of counts.
                 if ( rgbString in colorCounts ) {
-                  colorCounts[rgbString] = colorCounts[rgbString] + 1; 
-                } 
+                  colorCounts[rgbString] = colorCounts[rgbString] + 1;
+                }
                 else{
                   colorCounts[rgbString] = 1;
                 }
 
-                // Find dominant and palette, ignoring black/white pixels.
-                if ( rgbString !== "0,0,0" && rgbString !== "255,255,255" ) {
-                  var colorCount = colorCounts[rgbString]
+                // Find dominant and palette, ignoring those colors in the exclude list.
+                if ( exclude.indexOf( makeRGB(rgbString) ) === -1 ) {
+                  var colorCount = colorCounts[rgbString];
                   if ( colorCount > colors.dominant.count ){
                     colors.dominant.name = rgbString;
                     colors.dominant.count = colorCount;
@@ -97,12 +100,16 @@
                 i += BLOCKSIZE * 4;
               }
 
-              success && success({
-                dominant: makeRGB(colors.dominant.name),
-                palette:  mapPalette(colors.palette)
-              });
+              if ( opts.success ) {
+                var palette = mapPalette(colors.palette);
+                opts.success({
+                  dominant: makeRGB(colors.dominant.name),
+                  secondary: palette[0],
+                  palette:  palette
+                });
+              }
     });
-  }
+  };
 
   window.RGBaster = window.RGBaster || RGBaster;
 

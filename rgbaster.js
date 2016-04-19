@@ -49,7 +49,7 @@
   RGBaster.colors = function(img, opts){
 
     opts = opts || {};
-    var exclude = opts.exclude || [ ], // for example, to exlude white and black:  [ '0,0,0', '255,255,255' ]
+    var exclude = opts.exclude || [ ], // for example, to exclude white and black:  [ '0,0,0', '255,255,255' ]
         paletteSize = opts.paletteSize || PALETTESIZE;
 
     getImageData(img, function(data){

@@ -71,6 +71,13 @@
                 rgb[2] = data[i+2];
                 rgbString = rgb.join(",");
 
+                // skip undefined data
+                if (rgb.indexOf(undefined) !== -1) {
+                  // Increment!
+                  i += BLOCKSIZE * 4;
+                  continue;
+                }
+
                 // Keep track of counts.
                 if ( rgbString in colorCounts ) {
                   colorCounts[rgbString] = colorCounts[rgbString] + 1;

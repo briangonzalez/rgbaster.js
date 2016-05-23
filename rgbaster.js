@@ -18,7 +18,7 @@
       imgObj.crossOrigin = "Anonymous";
 
     imgObj.onload = function(){
-      var context = getContext('2d');
+      var context = getContext();
       context.drawImage(imgObj, 0, 0);
 
       var imageData = context.getImageData(0, 0, imgObj.width, imgObj.height);

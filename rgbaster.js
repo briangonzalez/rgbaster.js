@@ -57,7 +57,6 @@
   // RGBaster Object
   // ---------------
   //
-  var BLOCKSIZE = 5;
   var PALETTESIZE = 10;
 
   var RGBaster = {};
@@ -70,8 +69,7 @@
 
     getImageData(img, function(data){
 
-              var length        = ( img.width * img.height ) || data.length,
-                  colorCounts   = {},
+              var colorCounts   = {},
                   rgbString     = '',
                   rgb           = [],
                   colors        = {
@@ -79,9 +77,8 @@
                     palette:  []
                   };
 
-              // Loop over all pixels, in BLOCKSIZE iterations.
               var i = 0;
-              while ( i < length ) {
+              for (; i < data.length; i += 4) {
                 rgb[0] = data[i];
                 rgb[1] = data[i+1];
                 rgb[2] = data[i+2];
@@ -89,8 +86,6 @@
 
                 // skip undefined data
                 if (rgb.indexOf(undefined) !== -1) {
-                  // Increment!
-                  i += BLOCKSIZE * 4;
                   continue;
                 }
 
@@ -104,8 +99,6 @@
                   }
                 }
 
-                // Increment!
-                i += BLOCKSIZE * 4;
               }
 
               if ( opts.success ) {

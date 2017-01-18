@@ -84,8 +84,8 @@
                 rgb[2] = data[i+2];
                 rgbString = rgb.join(",");
 
-                // skip undefined data
-                if (rgb.indexOf(undefined) !== -1) {
+                // skip undefined data and transparent pixels
+                if (rgb.indexOf(undefined) !== -1  || data[i + 3] === 0) {
                   continue;
                 }
 

@@ -3,8 +3,11 @@
   "use strict";
 
   // Helper functions.
-  var getContext = function(){
-    return document.createElement("canvas").getContext('2d');
+  var getContext = function(width, height){
+    var canvas = document.createElement("canvas");
+    canvas.setAttribute('width', width);
+    canvas.setAttribute('height', height);  
+    return canvas.getContext('2d');
   };
 
   var getImageData = function(img, loaded){
@@ -18,7 +21,7 @@
       imgObj.crossOrigin = "Anonymous";
 
     imgObj.onload = function(){
-      var context = getContext();
+      var context = getContext(imgObj.width, imgObj.height);
       context.drawImage(imgObj, 0, 0);
 
       var imageData = context.getImageData(0, 0, imgObj.width, imgObj.height);

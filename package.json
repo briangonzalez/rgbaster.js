@@ -2,16 +2,14 @@
   "name": "rgbaster.js",
   "version": "1.0.0",
   "description": "A dead simple javascript library for extracting the dominant color(s) from an image.",
-  "main": "rgbaster.js",
+  "main": "rgbaster.min.js",
   "dependencies": {},
   "devDependencies": {
-    "grunt": "^0.4.2",
-    "gulp": "^3.8.1",
-    "grunt-contrib-uglify": "^0.2.7",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^0.3.1"  
+    "rollup": "^0.59.1",
+    "rollup-plugin-uglify": "^4.0.0"
   },
   "scripts": {
+    "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -87,6 +87,8 @@ rgbaster.js depends on the following browser functionality:
 
 Check the linked resources above to determine current level of browser support.
 
+### Handling of Transparency (RGBA)
+Fully transparent pixels are ignored. All semitransparent pixels will be treated as opaque.
 
 Author
 -------

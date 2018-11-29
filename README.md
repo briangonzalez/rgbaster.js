@@ -2,7 +2,7 @@
 
 A dead simple, zero-dependency, promise-based javascript library for extracting the dominant color(s) from an image.
 
-> 👉 Version 2 was written from the ground up with a cleaner, modern API, a more robust test suite, and is written in Typescript.
+> 👉 Version 2 was written from the ground up with a clean and modern API, a robust test suite, and is fully written in Typescript.
 
 ## Installation
 

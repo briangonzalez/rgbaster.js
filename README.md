@@ -1,104 +1,76 @@
 # <img src="https://rawgithub.com/briangonzalez/rgbaster.js/master/demo/baster.svg" width=25 style="margin-right: 10px"> RGBaster
 
-A dead simple javascript library for extracting the dominant color(s) from an image.
+A dead simple, zero-dependency, promise-based javascript library for extracting the dominant color(s) from an image.
 
-### Usage
+> Version 2 was written from the ground up with a cleaner, more modern API, amore robust test suite, and is written in Typescript.
 
-Usage is simple. Create an image (or grab an image URL), then get its dominant color & palette.
+## Installation
+
+```
+npm install --save rgbaster.js
+```
+
+## Usage
+
+This library exports a default function which returns a promise that resolves to a sorted array with
+the most dominant color at index 0, secondary at index 1, so on and so forth.
+
+```js
+[
+  { color: 'rgb(0,0,255)', count: 86  },
+  { color: 'rgb(9,18,42)', count: 32  },
+  { color: 'rgb(120,8,202)', count: 3  },
+]
+```
 
 ```javascript
-var img = document.getElementById('image');
-// or
-var img = 'http://example.com/path-to-image.jpg'
+import analyze from 'rgbaster.js'
 
-RGBaster.colors(img, {
-  success: function(payload) {
-    // You now have the payload.
-    console.log(payload.dominant);
-    console.log(payload.secondary);
-    console.log(payload.palette);
-  }
-});
+const result = await analyze('/2px-blue-and-1px-red-image.png') // also supports base64 encoded image strings
+
+console.log(`The dominant color is ${result[0].color} with ${result[0].count} occurrence(s)`)
+// => The  dominant color is rgb(0,0,255) with 2 occurrence(s)
+
+console.log(`The secondary color is ${result[1].color} with ${result[1].count} occurrence(s)`)
+// => The  secondary color is rgb(255,0,0) with 1 occurrence(s)
 ```
 
 
-### Configuration options
+## Configuration options
 
-The `colors` function takes an object as optional second parameter, with the following options:
+You may pass an optional second parameter, an object, with the following options:
 
-#### `paletteSize`
-Type: `int`
-Default: `10`
+#### `ignore`
 
-Maximum number of palette colors to return. Only the top palette colors will be returned.
+An array of colors to ignore (in the form of `rgb`) when counting colors.
 
-#### `exclude`
-Type: `array`
-Default: `[]`
-
-RGB colors to exclude when counting colors.<br>
-For example to exclude white and black use: `[ 'rgb(255,255,255)', 'rgb(0,0,0)' ]`
-
-#### `success`
-Type: `function`
-Default: `undefined`
-
-Function to call after image processing has completed.<br>The function will receive one `payload` argument with the following structure:
-
-```javascript
-{
-    // {string} dominant rgb color
-    dominant:  'rgb(0,0,0)',
-
-    // {string} secondary rgb color
-    secondary: 'rgb(0,0,1)',
-
-    // {array} list of colors in the image (limited by paletteSize)
-    palette:   [ 'rgb(0,0,1)', 'rgb(0,0,2)' ]
-}
+```js
+analyze('/image.png', { ignore: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ] })
 ```
 
-### Full example
+#### `scale`
 
-```javascript
-RGBaster.colors(img, {
-    // return up to 30 top colors from the palette
-    paletteSize: 30,
+In order to achieve greater speed, you can have `rgbaster` scale down the image we use internally prior to analysis, thus decreasing accuracy.
 
-    // don't count white
-    exclude: [ 'rgb(255,255,255)' ],
-
-    // do something when done
-    success: function(payload){
-        console.log('Dominant color:', payload.dominant);
-        console.log('Secondary color:', payload.secondary);
-        console.log('Palette:', payload.palette);
-    }
-})
+```js
+const result = await analyze('/image.png', { scale: 0.6 })
 ```
 
-### Browser support
+## Browser support
 
-rgbaster.js depends on the following browser functionality:
+`rgbaster` depends on the following browser functionality:
 
 * [Canvas](http://caniuse.com/#feat=canvas)
 * [CORS](http://caniuse.com/#feat=cors)
-* Array.prototype.map ([can i use](http://caniuse.com/#feat=es5), [compatibility table](http://kangax.github.io/es5-compat-table/#Array.prototype.map))
 
-Check the linked resources above to determine current level of browser support.
+## Maintainers
 
-### Handling of Transparency (RGBA)
-Fully transparent pixels are ignored. All semitransparent pixels will be treated as opaque.
+- [Alfred J. Kwack](https://github.com/AlfredJKwack)
+- [Brian Gonzalez](https://github.com/briangonzalez)
 
-Author
--------
-| ![twitter/brianmgonzalez](http://gravatar.com/avatar/f6363fe1d9aadb1c3f07ba7867f0e854?s=70](http://twitter.com/brianmgonzalez "Follow @brianmgonzalez on Twitter") |
-|---|
-| [Brian Gonzalez](http://briangonzalez.org) |
+## About
 
-About
------
-RGBaster was created to modularize a feature of another plugin I built called [adaptive backgrounds](http://briangonzalez.github.io/jquery.adaptive-backgrounds.js/). Check it out.
+`rgbaster` was created to modularize [adaptive backgrounds](http://briangonzalez.github.io/jquery.adaptive-backgrounds.js/). Check it out.
 
 License
 -------

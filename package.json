@@ -1,23 +1,37 @@
 {
   "name": "rgbaster.js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A dead simple javascript library for extracting the dominant color(s) from an image.",
   "main": "rgbaster.min.js",
-  "dependencies": {},
   "devDependencies": {
-    "rollup": "^0.59.1",
-    "rollup-plugin-uglify": "^4.0.0"
+    "@jest-runner/electron": "^0.1.0",
+    "@types/jest": "^23.3.9",
+    "jest": "^23.6.0",
+    "jest-dev-server": "^3.5.2",
+    "rollup-plugin-typescript": "^1.0.0",
+    "rollup-plugin-uglify": "^6.0.0",
+    "rollup": "^0.67.3",
+    "static-server": "^2.2.1",
+    "ts-jest": "^23.10.5",
+    "tslib": "^1.9.3",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.1.6"
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
+  "files": [
+    "rgbaster.min.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/briangonzalez/rgbaster.js.git"
   },
   "author": "Brian Gonzalez",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/briangonzalez/rgbaster.js/issues"
   },

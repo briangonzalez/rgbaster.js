@@ -1,11 +1,17 @@
-import { uglify } from 'rollup-plugin-uglify';
+import typescript from 'rollup-plugin-typescript'
+import { uglify } from "rollup-plugin-uglify"
 
-export default {
-  input: 'rgbaster.js',
+export default [
+{
+  input: './src/index.ts',
   output: {
-    file: 'rgbaster.min.js',
     format: 'umd',
-    name: 'RGBaster'
+    name: 'rgbaster',
+    file: 'rgbaster.min.js'
   },
-  plugins: [  uglify() ]
-};
+  plugins: [
+    typescript(),
+    uglify()
+  ]
+}
+]

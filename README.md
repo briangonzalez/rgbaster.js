@@ -1,4 +1,4 @@
-# <img src="https://rawgithub.com/briangonzalez/rgbaster.js/master/demo/baster.svg" width=25 style="margin-right: 10px"> RGBaster
+![artboard](https://user-images.githubusercontent.com/659829/49244473-bd4ed580-f3c4-11e8-8bf2-498585148910.jpg)
 
 A dead simple, zero-dependency, promise-based javascript library for extracting the dominant color(s) from an image.
 

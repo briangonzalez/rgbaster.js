@@ -7,7 +7,7 @@ A dead simple, zero-dependency, promise-based javascript library for extracting 
 ## Installation
 
 ```
-npm install --save rgbaster.js
+npm install --save rgbaster
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ the most dominant color at index 0, secondary at index 1, so on and so forth.
 ```
 
 ```javascript
-import analyze from 'rgbaster.js'
+import analyze from 'rgbaster'
 
 const result = await analyze('/2px-blue-and-1px-red-image.png') // also supports base64 encoded image strings
 

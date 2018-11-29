@@ -45,7 +45,7 @@ You may pass an optional second parameter, an object, with the following options
 An array of colors to ignore (in the form of `rgb`) when counting colors.
 
 ```js
-analyze('/image.png', { ignore: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ] })
+const result = await analyze('/image.png', { ignore: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ] })
 ```
 
 #### `scale`

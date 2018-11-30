@@ -18,7 +18,7 @@ export default async function (src: string, opts: Opts = defaultOpts): Promise<{
   opts = { ...defaultOpts, ...opts }
 
   const {
-    ignore, // for example, to ignore white and black:  [ '0,0,0', '255,255,255' ]
+    ignore, // for example, to ignore white and black:  [ 'rgb(0,0,0)', 'rgb(255,255,255)' ]
     scale   // 0 = best performance, lowest fidelity
             // 1 = best fidelity, worst performance
   } = opts

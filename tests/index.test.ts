@@ -25,6 +25,15 @@ it('gets colors for images with a source', async () => {
   expect(result[1].color).toEqual(green)
 })
 
+it('ignores a given color for images with a source', async () => {
+  const img = 'http://localhost:9080/dominant-red-secondary-green.png'
+  const ignoreColors = [ 'rgb(255,0,0)']
+  const result = await analyze(img, { ignore: ignoreColors })
+
+  expect(result[0].count).toEqual(25)
+  expect(result[0].color).toEqual(green)
+})
+
 it('scales images and does less work', async () => {
   const img = 'http://localhost:9080/dominant-red-secondary-green.png'
   const result = await analyze(img, { scale: 0.5 })

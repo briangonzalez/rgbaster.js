@@ -3,6 +3,14 @@ import analyze from '../src/index'
 const green = 'rgb(126,211,33)'
 const red = 'rgb(255,0,0)'
 
+
+it('tests error with images', () => {
+  const img = ''
+  expect.assertions(1);
+  return expect(analyze(img)).rejects.toEqual(new Error('An error occurred attempting to load image'));
+});
+
+
 it('gets colors for base64 encoded images', async () => {
   const img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAGhJREFUSA3t0rENgCAABVFxEwdgRRNmZABGEWsoPsWVZ6f5OZMH5e3Pdy1Pq2P5wr/efPKs6I/PnIBV+W/WdrmAbkx4xpGIGkhNScaO1JGIGkhNScaO1JGIGkhNScaO1JGIGkhNScbOBKiIBjchGZzYAAAAAElFTkSuQmCC'
   const result = await analyze(img)

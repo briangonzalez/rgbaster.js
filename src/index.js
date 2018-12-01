@@ -45,7 +45,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var helpers_1 = require("./helpers");
 var defaultOpts = {
     ignore: [],
@@ -54,19 +54,19 @@ var defaultOpts = {
 function default_1(src, opts) {
     if (opts === void 0) { opts = defaultOpts; }
     return __awaiter(this, void 0, void 0, function () {
-        var ignore, scale // 0 = best performance, lowest fidelity
-        , data;
+        var ignore, scale, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     opts = __assign({}, defaultOpts, opts);
                     ignore = opts.ignore, scale = opts.scale;
-                    return [4 /*yield*/, helpers_1.getImageData(src, scale)];
+                    return [4, helpers_1.getImageData(src, scale)];
                 case 1:
                     data = _a.sent();
-                    return [2 /*return*/, helpers_1.getCounts(data, ignore)];
+                    return [2, helpers_1.getCounts(data, ignore)];
             }
         });
     });
 }
-exports["default"] = default_1;
+exports.default = default_1;
+//# sourceMappingURL=index.js.map

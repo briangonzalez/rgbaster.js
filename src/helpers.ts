@@ -25,7 +25,7 @@ export const getImageData = (src: string, scale: number = 1): Promise<Uint8Clamp
       resolve(data)
     }
 
-    const errorHandler = () => reject('An error occurred attempting to load image')
+    const errorHandler = () => reject(new Error('An error occurred attempting to load image'))
 
     img.onerror = errorHandler
     img.onabort = errorHandler

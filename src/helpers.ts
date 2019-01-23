@@ -33,6 +33,10 @@ export const getImageData = (src: string, scale: number = 1): Promise<Uint8Clamp
   })
 }
 
+const getRgbComponents = (data: Uint8ClampedArray, fromIndex: number): number[] => {
+  return Array(3).fill(0).map((_, i) => data[fromIndex + i])
+}
+
 export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {
   let color: string = ''
   const countMap = {}
@@ -44,8 +48,8 @@ export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {
     alpha = data[i + 3]
     // skip FULLY transparent pixels
     if (alpha === 0) continue
-    
-    rgbComponents = Array.from(data).splice(i, 3)
+
+    rgbComponents = getRgbComponents(data, i)
 
     color = alpha && alpha !== 255
       ? `rgba(${[...rgbComponents, alpha].join(',')})`

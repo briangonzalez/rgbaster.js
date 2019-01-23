@@ -41,11 +41,11 @@ export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {
   let alpha
 
   for (let i = 0; i < data.length; i += 4 /* 4 gives us r, g, b, and a*/) {
-    rgbComponents = Array.from(data).splice(i, 3)
     alpha = data[i + 3]
-
     // skip FULLY transparent pixels
     if (alpha === 0) continue
+    
+    rgbComponents = Array.from(data).splice(i, 3)
 
     color = alpha && alpha !== 255
       ? `rgba(${[...rgbComponents, alpha].join(',')})`

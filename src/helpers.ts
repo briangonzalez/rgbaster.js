@@ -34,7 +34,7 @@ export const getImageData = (src: string, scale: number = 1): Promise<Uint8Clamp
 }
 
 const getRgbComponents = (data: Uint8ClampedArray, fromIndex: number): number[] => {
-  return Array(3).fill(0).map((_, i) => data[fromIndex + i])
+  return Array.from(data.subarray(fromIndex, fromIndex + 3))
 }
 
 export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {

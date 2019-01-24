@@ -54,10 +54,9 @@ export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {
     // skip undefined data
     if (rgbComponents.indexOf(undefined) !== -1) continue
 
-    color = `rgba(${(alpha && alpha !== 255
-      ? rgbComponents
-      : [...rgbComponents, alpha]
-    ).join(',')})`
+    color = alpha && alpha !== 255
+      ? `rgba(${[...rgbComponents, alpha].join(',')})`
+      : `rgb(${rgbComponents.join(',')})`
 
     // skip colors in the ignore list
     if (ignore.indexOf(color) !== -1) continue

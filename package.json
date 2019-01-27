@@ -2,30 +2,33 @@
   "name": "rgbaster",
   "version": "2.0.0",
   "description": "A dead simple javascript library for extracting the dominant color(s) from an image.",
-  "main": "rgbaster.min.js",
+  "main": "dist/rgbaster.js",
+  "module": "dist/rgbaster.mjs",
+  "jsnext:main": "dist/rgbaster.mjs",
+  "umd:main": "dist/rgbaster.umd.js",
+  "unpkg": "dist/rgbaster.umd.js",
+  "browser": "dist/rgbaster.umd.js",
   "devDependencies": {
     "@jest-runner/electron": "^0.1.0",
     "@types/jest": "^23.3.9",
     "jest": "^23.6.0",
     "jest-dev-server": "^3.5.2",
-    "rollup-plugin-typescript": "^1.0.0",
-    "rollup-plugin-uglify": "^6.0.0",
-    "rollup": "^0.67.3",
+    "microbundle": "^0.9.0",
     "static-server": "^2.2.1",
     "ts-jest": "^23.10.5",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
-    "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.1.6"
+    "tslint-config-standard": "^8.0.1"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "test": "jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "prepublishOnly": "npm run build"
   },
   "files": [
-    "rgbaster.min.js"
+    "dist"
   ],
   "repository": {
     "type": "git",

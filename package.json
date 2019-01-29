@@ -24,7 +24,7 @@
     "build": "microbundle",
     "dev": "microbundle watch",
     "test": "jest",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint": "tslint --fix -c tslint.json 'src/**/*.ts'",
     "prepublishOnly": "npm run build"
   },
   "files": [

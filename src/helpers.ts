@@ -38,23 +38,19 @@ const getRgbComponents = (data: Uint8ClampedArray, fromIndex: number): number[] 
 }
 
 export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {
-  let color: string = ''
   const countMap = {}
 
-  let rgbComponents = []
-  let alpha
-
   for (let i = 0; i < data.length; i += 4 /* 4 gives us r, g, b, and a*/) {
-    alpha = data[i + 3]
+    let alpha: number = data[i + 3]
     // skip FULLY transparent pixels
     if (alpha === 0) continue
 
-    rgbComponents = getRgbComponents(data, i)
+    let rgbComponents: number[] = getRgbComponents(data, i)
 
     // skip undefined data
     if (rgbComponents.indexOf(undefined) !== -1) continue
 
-    color = alpha && alpha !== 255
+    let color: string = alpha && alpha !== 255
       ? `rgba(${[...rgbComponents, alpha].join(',')})`
       : `rgb(${rgbComponents.join(',')})`
 

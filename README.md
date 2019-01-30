@@ -1,6 +1,6 @@
 ![artboard](https://user-images.githubusercontent.com/659829/49244473-bd4ed580-f3c4-11e8-8bf2-498585148910.jpg)
 
-A dead simple, zero-dependency, promise-based javascript library for extracting the dominant color(s) from an image.
+A dead simple, zero-dependency, promise-based javascript library for extracting the dominant color(s) from an image (in the browser).
 
 > 👉 Version 2 was written from the ground up with a clean and modern API, a robust test suite, and is fully written in Typescript.
 

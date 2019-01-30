@@ -53,9 +53,11 @@ export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {
     // skip colors in the ignore list
     if (ignore.indexOf(color) !== -1) continue
 
-    countMap[color] = countMap[color]
-      ? { color, count: countMap[color].count + 1 }
-      : { color, count: 1 }
+    if (countMap[color]) {
+      countMap[color].count++
+    } else {
+      countMap[color] = { color, count: 1 }
+    }
   }
 
   const counts = Object.values(countMap) as []

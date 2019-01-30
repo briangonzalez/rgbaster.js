@@ -33,10 +33,6 @@ export const getImageData = (src: string, scale: number = 1): Promise<Uint8Clamp
   })
 }
 
-const getRgbComponents = (data: Uint8ClampedArray, fromIndex: number): number[] => {
-  return Array.from(data.subarray(fromIndex, fromIndex + 3))
-}
-
 export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {
   const countMap = {}
 
@@ -45,7 +41,7 @@ export const getCounts = (data: Uint8ClampedArray, ignore: string[]): [] => {
     // skip FULLY transparent pixels
     if (alpha === 0) continue
 
-    let rgbComponents: number[] = getRgbComponents(data, i)
+    let rgbComponents: number[] = Array.from(data.subarray(i, i + 3))
 
     // skip undefined data
     if (rgbComponents.indexOf(undefined) !== -1) continue

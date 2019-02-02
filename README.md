@@ -70,6 +70,7 @@ const result = await analyze('/image.png', { scale: 0.6 })
 
 - [Alfred J. Kwack](https://github.com/AlfredJKwack)
 - [Brian Gonzalez](https://github.com/briangonzalez)
+- [Abdellah Hariti](https://github.com/a-hariti)
 
 ## About
 

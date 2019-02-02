@@ -2,6 +2,9 @@
 
 A dead simple, zero-dependency, promise-based javascript library for extracting the dominant color(s) from an image (in the browser).
 
+[![npm version](http://img.shields.io/npm/v/rgbaster.js.svg?style=flat)](https://npmjs.org/package/rgbaster.js "View this project on npm")
+
+
 > 👉 Version 2 was written from the ground up with a clean and modern API, a robust test suite, and is fully written in Typescript.
 
 ## Installation

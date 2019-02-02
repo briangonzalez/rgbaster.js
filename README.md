@@ -12,7 +12,7 @@ npm install --save rgbaster
 
 ## Usage
 
-This library exports a default function which returns a promise that resolves to a sorted array with
+This library exports a default function which returns a promise resolving to a sorted array with
 the most dominant color at index 0, secondary at index 1, so on and so forth.
 
 ```js

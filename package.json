@@ -26,7 +26,7 @@
   "scripts": {
     "build:no-min": "microbundle -f cjs,es --no-compress --sourcemap false",
     "build:umd": "microbundle -f umd ",
-    "clean": "rm dist/*",
+    "clean": "if [ -d dist ]; then rm dist/*; fi",
     "build": "npm-run-all clean build:*",
     "dev": "microbundle watch",
     "test": "jest",

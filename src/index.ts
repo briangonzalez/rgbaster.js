@@ -23,6 +23,10 @@ export default async function (src: string, opts: Opts = defaultOpts): Promise<{
             // 1 = best fidelity, worst performance
   } = opts
 
+  if (scale > 1 || scale <= 0) {
+    console.warn(`You set scale to ${scale}, which isn't between 0-1. This is either pointless (> 1) or a no-op (≤ 0)`)
+  }
+
   const data = await getImageData(src, scale)
   return getCounts(data, ignore)
 }

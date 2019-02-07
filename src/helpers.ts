@@ -8,7 +8,6 @@ export const getContext = (width, height) => {
 
 export const getImageData = (src: string, scale: number = 1): Promise<Uint8ClampedArray> => {
   const img = new Image()
-  src = src || img.src
 
   // Can't set cross origin to be anonymous for data url's
   // https://github.com/mrdoob/three.js/issues/1305

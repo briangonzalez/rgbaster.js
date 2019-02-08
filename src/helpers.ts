@@ -11,7 +11,7 @@ export const getImageData = (src: string, scale: number = 1): Promise<Uint8Clamp
 
   // Can't set cross origin to be anonymous for data url's
   // https://github.com/mrdoob/three.js/issues/1305
-  if (src.startsWith('data')) img.crossOrigin = 'Anonymous'
+  if (!src.startsWith('data')) img.crossOrigin = 'Anonymous'
 
   return new Promise((resolve, reject) => {
     img.onload = function () {

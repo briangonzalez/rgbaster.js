@@ -8,6 +8,7 @@
   "umd:main": "dist/rgbaster.umd.js",
   "unpkg": "dist/rgbaster.umd.js",
   "browser": "dist/rgbaster.umd.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "@jest-runner/electron": "^0.1.0",
     "@types/jest": "^23.3.9",
